@@ -1,0 +1,128 @@
+/* Home.module.css - With Smooth Animations */
+
+.homeContainer {
+  overflow-x: hidden;
+}
+
+.sectionsContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-xl);
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: var(--space-xl);
+}
+
+/* Animation Base Styles */
+.section {
+  opacity: 0;
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.section.visible {
+  opacity: 1;
+}
+
+/* Fade In Up Animation */
+.fadeInUp {
+  transform: translateY(60px);
+}
+
+.fadeInUp.visible {
+  transform: translateY(0);
+}
+
+/* Fade In Left Animation */
+.fadeInLeft {
+  transform: translateX(-60px);
+}
+
+.fadeInLeft.visible {
+  transform: translateX(0);
+}
+
+/* Fade In Right Animation */
+.fadeInRight {
+  transform: translateX(60px);
+}
+
+.fadeInRight.visible {
+  transform: translateX(0);
+}
+
+/* Scale In Animation */
+.scaleIn {
+  transform: scale(0.9);
+}
+
+.scaleIn.visible {
+  transform: scale(1);
+}
+
+/* Column Animations - Staggered Effect */
+.column {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.visible .column:nth-child(1) {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.2s;
+}
+
+.visible .column:nth-child(2) {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.4s;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .sectionsContainer {
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+    padding: var(--space-lg);
+  }
+
+  /* Adjust animation distances for mobile */
+  .fadeInUp {
+    transform: translateY(40px);
+  }
+
+  .fadeInLeft,
+  .fadeInRight {
+    transform: translateY(40px);
+  }
+}
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  .section,
+  .column {
+    transition: opacity 0.3s ease;
+    transform: none !important;
+  }
+
+  .fadeInUp,
+  .fadeInLeft,
+  .fadeInRight,
+  .scaleIn {
+    transform: none;
+  }
+}
+
+/* Optional: Add a subtle entrance animation for the entire page */
+@keyframes pageLoad {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.homeContainer {
+  animation: pageLoad 0.4s ease-out;
+}

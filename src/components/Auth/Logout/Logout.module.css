@@ -1,0 +1,77 @@
+/* === Logout Button === */
+.logoutBtn {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-sm) var(--space-md);
+  background: transparent;
+  color: var(--text-secondary);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-lg);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  font-family: var(--font-family-sans);
+  cursor: pointer;
+  transition: var(--transition-normal);
+  white-space: nowrap;
+}
+
+.logoutBtn:hover {
+  background: var(--bg-hover);
+  color: var(--error);
+  border-color: var(--error);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-sm);
+}
+
+.logoutBtn:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+/* === Logout Icon === */
+.icon {
+  font-size: 1rem;
+  transition: var(--transition-normal);
+}
+
+.logoutBtn:hover .icon {
+  transform: translateX(-1px);
+}
+
+/* === Focus State === */
+.logoutBtn:focus {
+  outline: 2px solid var(--error);
+  outline-offset: 2px;
+}
+
+/* === Mobile Responsive === */
+@media (max-width: 768px) {
+  .logoutBtn {
+    padding: var(--space-xs) var(--space-sm);
+    font-size: var(--font-size-xs);
+    border-radius: var(--radius-md);
+  }
+
+  .icon {
+    font-size: 0.875rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .logoutBtn {
+    padding: var(--space-xs);
+    font-size: 0;
+    width: 36px;
+    height: 36px;
+    justify-content: center;
+  }
+
+  .logoutBtn span {
+    display: none;
+  }
+
+  .icon {
+    margin: 0;
+  }
+}

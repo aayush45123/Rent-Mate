@@ -1,0 +1,96 @@
+/* === Login Wrapper === */
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* === Main Login Button === */
+.button {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-sm) var(--space-lg);
+  background: var(--primary);
+  color: var(--white);
+  border: none;
+  border-radius: var(--radius-lg);
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-semibold);
+  font-family: var(--font-family-sans);
+  cursor: pointer;
+  transition: var(--transition-normal);
+  box-shadow: var(--shadow-md);
+  text-decoration: none;
+  user-select: none;
+  white-space: nowrap;
+}
+
+.button:hover {
+  background: var(--primary-hover);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-lg);
+}
+
+.button:active {
+  transform: translateY(0);
+  box-shadow: var(--shadow-sm);
+}
+
+/* === Arrow Animation === */
+.arrowWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  margin-left: var(--space-xs);
+  transition: var(--transition-normal);
+}
+
+.arrow {
+  width: 6px;
+  height: 6px;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: rotate(-45deg);
+  transition: var(--transition-normal);
+}
+
+.button:hover .arrowWrapper {
+  transform: translateX(3px);
+}
+
+/* === Focus State === */
+.button:focus {
+  outline: 2px solid var(--primary-light);
+  outline-offset: 2px;
+}
+
+/* === Mobile Responsive === */
+@media (max-width: 768px) {
+  .button {
+    padding: var(--space-sm) var(--space-md);
+    font-size: var(--font-size-sm);
+    border-radius: var(--radius-md);
+  }
+
+  .arrowWrapper {
+    width: 14px;
+    height: 14px;
+  }
+
+  .arrow {
+    width: 5px;
+    height: 5px;
+  }
+}
+
+@media (max-width: 480px) {
+  .button {
+    padding: var(--space-xs) var(--space-md);
+    font-size: var(--font-size-sm);
+    gap: var(--space-xs);
+  }
+}

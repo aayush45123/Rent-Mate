@@ -1,0 +1,525 @@
+/* FlatmateCard.module.css */
+.flatmateCard {
+  --main-color: #000;
+  --submain-color: #78858f;
+  --bg-color: #fff;
+
+  background: var(--bg-color);
+  border: 1px solid var(--card-border, #e5e7eb);
+  border-radius: 20px;
+  padding: 0;
+  box-shadow: var(--card-shadow, 0 1px 3px 0 rgba(0, 0, 0, 0.1));
+  transition: all var(--transition-normal, 0.3s ease);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 480px;
+  height: 100%;
+  cursor: pointer;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+.flatmateCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  border-color: var(--primary-light, #93c5fd);
+}
+
+/* Decorative Background Pattern */
+.cardBackground {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 192px;
+  width: 100%;
+  z-index: 0;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 20px 20px 0 0;
+}
+
+.cardBackground svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+  opacity: 0.3;
+}
+
+/* Status Badge */
+.statusBadge {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: var(--success, #10b981);
+  color: var(--white, #ffffff);
+  padding: 4px 12px;
+  border-radius: 9999px;
+  font-size: 11px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  z-index: 2;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Avatar Section */
+.avatarWrapper {
+  position: relative;
+  width: 114px;
+  height: 114px;
+  background: var(--bg-color);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 135px;
+  z-index: 1;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.profileAvatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  transition: transform var(--transition-normal, 0.3s ease);
+}
+
+.flatmateCard:hover .profileAvatar {
+  transform: scale(1.05);
+}
+
+/* Profile Section - Centered */
+.profileSection {
+  text-align: center;
+  margin-top: 16px;
+  padding: 0 24px;
+  z-index: 1;
+}
+
+.cardTitle {
+  font-weight: 500;
+  font-size: 18px;
+  color: var(--main-color);
+  margin: 0 0 8px 0;
+  line-height: 1.2;
+  transition: color var(--transition-normal, 0.3s ease);
+}
+
+.flatmateCard:hover .cardTitle {
+  color: var(--primary, #3b82f6);
+}
+
+.cardSubtitle {
+  font-weight: 400;
+  font-size: 15px;
+  color: var(--submain-color);
+  margin: 0 0 6px 0;
+  line-height: 1.4;
+}
+
+.memberSinceNew {
+  font-size: 13px;
+  color: var(--text-tertiary, #9ca3af);
+  font-weight: 500;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.memberSinceNew::before {
+  content: "🟢";
+  font-size: 10px;
+}
+
+/* Contact Info */
+.contactInfoNew {
+  margin-top: 12px;
+  padding: 0 24px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  z-index: 1;
+}
+
+.emailNew {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  color: var(--text-secondary, #6b7280);
+  font-weight: 500;
+  margin: 0;
+  transition: color var(--transition-normal, 0.3s ease);
+}
+
+.flatmateCard:hover .emailNew {
+  color: var(--main-color);
+}
+
+.emailNew::before {
+  content: "📧";
+  font-size: 13px;
+}
+
+/* Content Sections */
+.contentSections {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 20px;
+  padding: 0 24px;
+  width: 100%;
+  z-index: 1;
+}
+
+/* About Section */
+.aboutSection {
+  flex-shrink: 0;
+}
+
+.sectionLabel {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--main-color);
+  margin: 0 0 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: color var(--transition-normal, 0.3s ease);
+}
+
+.flatmateCard:hover .sectionLabel {
+  color: var(--primary, #3b82f6);
+}
+
+.sectionLabel::before {
+  content: "💬";
+  font-size: 11px;
+}
+
+.aboutText {
+  font-size: 13px;
+  color: var(--text-secondary, #6b7280);
+  line-height: 1.6;
+  margin: 0;
+  padding: 12px;
+  background: #f9fafb;
+  border-radius: 8px;
+  border-left: 3px solid var(--primary, #3b82f6);
+  min-height: 60px;
+  display: flex;
+  align-items: center;
+  transition: all var(--transition-normal, 0.3s ease);
+}
+
+.flatmateCard:hover .aboutText {
+  background: #eff6ff;
+  border-left-color: #2563eb;
+}
+
+/* Social Media Section */
+.socialSection {
+  flex-shrink: 0;
+}
+
+.socialStatus {
+  font-size: 13px;
+  color: var(--text-tertiary, #9ca3af);
+  font-style: italic;
+  margin: 0;
+  padding: 12px;
+  background: #f9fafb;
+  border-radius: 8px;
+  text-align: center;
+  min-height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-normal, 0.3s ease);
+}
+
+.flatmateCard:hover .socialStatus {
+  background: #eff6ff;
+}
+
+.socialLinks {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  min-height: 50px;
+  align-items: center;
+}
+
+.socialLink {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  background: #eff6ff;
+  color: var(--primary, #3b82f6);
+  text-decoration: none;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 500;
+  transition: all var(--transition-normal, 0.3s ease);
+  border: 1px solid transparent;
+}
+
+.socialLink:hover {
+  background: var(--primary, #3b82f6);
+  color: var(--white, #ffffff);
+  transform: translateY(-1px);
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+}
+
+/* Button Wrapper */
+.buttonWrapper {
+  display: flex;
+  gap: 12px;
+  margin-top: auto;
+  padding: 20px 24px 24px;
+  width: 100%;
+  z-index: 1;
+}
+
+.actionButton {
+  flex: 1;
+  height: 38px;
+  border: 2px solid var(--main-color);
+  border-radius: 6px;
+  font-weight: 700;
+  font-size: 11px;
+  color: var(--main-color);
+  background: var(--bg-color);
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  letter-spacing: 0.5px;
+}
+
+.actionButton:hover {
+  background: var(--main-color);
+  color: var(--bg-color);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.actionButtonSolid {
+  flex: 1;
+  height: 38px;
+  border: 2px solid var(--main-color);
+  border-radius: 6px;
+  font-weight: 700;
+  font-size: 11px;
+  color: var(--bg-color);
+  background: var(--main-color);
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  letter-spacing: 0.5px;
+  position: relative;
+  overflow: hidden;
+}
+
+.actionButtonSolid::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
+  transition: left 0.5s;
+}
+
+.actionButtonSolid:hover {
+  background: #1a1a1a;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2);
+}
+
+.actionButtonSolid:hover::before {
+  left: 100%;
+}
+
+.actionButton:active,
+.actionButtonSolid:active {
+  transform: translateY(0);
+}
+
+/* Legacy styles for backward compatibility */
+.cardHeader {
+  display: none;
+}
+
+.profileImage {
+  display: none;
+}
+
+.profileInfo {
+  display: none;
+}
+
+.name {
+  display: none;
+}
+
+.memberSince {
+  display: none;
+}
+
+.userType {
+  display: none;
+}
+
+.contactInfo {
+  display: none;
+}
+
+.email {
+  display: none;
+}
+
+.connectSection {
+  display: none;
+}
+
+.connectButton {
+  display: none;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .flatmateCard {
+    min-height: 460px;
+  }
+
+  .avatarWrapper {
+    width: 100px;
+    height: 100px;
+    margin-top: 125px;
+  }
+
+  .profileAvatar {
+    width: 86px;
+    height: 86px;
+  }
+
+  .aboutText {
+    min-height: 55px;
+    padding: 10px;
+  }
+
+  .socialStatus {
+    min-height: 45px;
+  }
+}
+
+@media (max-width: 768px) {
+  .flatmateCard {
+    min-height: 440px;
+  }
+
+  .contentSections {
+    gap: 14px;
+  }
+
+  .buttonWrapper {
+    padding: 18px 20px 20px;
+    gap: 10px;
+  }
+
+  .actionButton,
+  .actionButtonSolid {
+    height: 36px;
+    font-size: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .flatmateCard {
+    padding: 0;
+    min-height: 420px;
+  }
+
+  .avatarWrapper {
+    width: 90px;
+    height: 90px;
+    margin-top: 120px;
+  }
+
+  .profileAvatar {
+    width: 76px;
+    height: 76px;
+  }
+
+  .profileSection {
+    padding: 0 16px;
+  }
+
+  .contactInfoNew {
+    padding: 0 16px;
+  }
+
+  .contentSections {
+    padding: 0 16px;
+    gap: 12px;
+  }
+
+  .buttonWrapper {
+    padding: 16px;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .actionButton,
+  .actionButtonSolid {
+    width: 100%;
+    height: 36px;
+  }
+
+  .aboutText,
+  .socialStatus {
+    min-height: 50px;
+  }
+}
+
+/* Focus states for accessibility */
+.actionButton:focus,
+.actionButtonSolid:focus {
+  outline: 2px solid var(--primary, #3b82f6);
+  outline-offset: 2px;
+}
+
+.socialLink:focus {
+  outline: 2px solid var(--primary, #3b82f6);
+  outline-offset: 2px;
+}
+
+.flatmateCard:focus {
+  outline: 2px solid var(--primary, #3b82f6);
+  outline-offset: 4px;
+}
+
+/* Animation for click feedback */
+.flatmateCard:active {
+  transform: translateY(-2px) scale(0.98);
+  transition: transform 0.1s ease;
+}

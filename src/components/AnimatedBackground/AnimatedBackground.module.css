@@ -1,0 +1,198 @@
+/* AnimatedBackground.module.css */
+.background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    135deg,
+    #f8fafc 0%,
+    #f1f5f9 25%,
+    #e2e8f0 50%,
+    #f1f5f9 75%,
+    #f8fafc 100%
+  );
+  overflow: hidden;
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* Building and Home Icons */
+.building,
+.home {
+  position: absolute;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  pointer-events: none;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+}
+
+.building:hover,
+.home:hover {
+  transform: scale(1.1) translateY(-2px);
+}
+
+/* Connection Lines */
+.connectionLines {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: radial-gradient(
+    circle at center,
+    rgba(100, 116, 139, 0.1) 1px,
+    transparent 1px
+  );
+  background-size: 50px 50px;
+  animation: subtleMove 40s linear infinite;
+  opacity: 0.3;
+}
+
+@keyframes subtleMove {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 50px 50px;
+  }
+}
+
+/* Gradient Overlays */
+.gradientOverlay1,
+.gradientOverlay2 {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+  opacity: 0.08;
+  animation-duration: 25s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+}
+
+.gradientOverlay1 {
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, #3b82f6 0%, transparent 70%);
+  top: 20%;
+  left: 10%;
+  animation-name: gentleFloat1;
+}
+
+.gradientOverlay2 {
+  width: 350px;
+  height: 350px;
+  background: radial-gradient(circle, #10b981 0%, transparent 70%);
+  bottom: 15%;
+  right: 15%;
+  animation-name: gentleFloat2;
+}
+
+@keyframes gentleFloat1 {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(30px, -20px) scale(1.05);
+  }
+  66% {
+    transform: translate(-20px, 15px) scale(0.98);
+  }
+}
+
+@keyframes gentleFloat2 {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(-25px, 25px) scale(1.03);
+  }
+  66% {
+    transform: translate(20px, -15px) scale(0.97);
+  }
+}
+
+/* Community Pattern */
+.communityPattern {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: radial-gradient(
+      circle at 30% 30%,
+      rgba(59, 130, 246, 0.03) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 70% 70%,
+      rgba(16, 185, 129, 0.03) 0%,
+      transparent 50%
+    );
+  opacity: 0.4;
+}
+
+/* Interactive enhancement */
+.background:active .building,
+.background:active .home {
+  transform: scale(1.05);
+  transition: transform 0.1s ease;
+}
+
+/* Intensity variations */
+.soft .building,
+.soft .home {
+  opacity: 0.15;
+}
+
+.medium .building,
+.medium .home {
+  opacity: 0.25;
+}
+
+.strong .building,
+.strong .home {
+  opacity: 0.35;
+}
+
+/* Performance and accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .building,
+  .home {
+    animation: none;
+  }
+
+  .connectionLines {
+    animation: none;
+  }
+
+  .gradientOverlay1,
+  .gradientOverlay2 {
+    animation: none;
+  }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .gradientOverlay1,
+  .gradientOverlay2 {
+    filter: blur(40px);
+  }
+
+  .gradientOverlay1 {
+    width: 250px;
+    height: 250px;
+  }
+
+  .gradientOverlay2 {
+    width: 200px;
+    height: 200px;
+  }
+
+  .building,
+  .home {
+    transform: scale(0.8);
+  }
+}

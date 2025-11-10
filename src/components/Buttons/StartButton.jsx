@@ -1,0 +1,43 @@
+import React from "react";
+import styled from "styled-components";
+
+const Button = () => {
+  return (
+    <StyledWrapper>
+      <button>Start Exploring</button>
+    </StyledWrapper>
+  );
+};
+
+const StyledWrapper = styled.div`
+  button {
+    background-color: #eee;
+    border: none;
+    padding: 1rem;
+    font-size: 1rem;
+    width: 10em;
+    border-radius: 1rem;
+    color: lightcoral;
+    box-shadow: 0 0.4rem #dfd9d9;
+    cursor: pointer;
+  }
+
+  button:active {
+    color: white;
+    box-shadow: 0 0.2rem #dfd9d9;
+    transform: translateY(0.2rem);
+  }
+
+  button:hover:not(:disabled) {
+    background: lightcoral;
+    color: white;
+    text-shadow: 0 0.1rem #bcb4b4;
+  }
+
+  button:disabled {
+    cursor: auto;
+    color: grey;
+  }
+`;
+
+export default Button;
