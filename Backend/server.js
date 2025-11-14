@@ -20,7 +20,6 @@ app.use(express.urlencoded({ limit: "50mb", extended: true }));
 
 // CORS configuration - Updated to include localhost:5173
 app.use(
- app.use(
   cors({
     origin: [
       "http://localhost:5173",
@@ -33,7 +32,6 @@ app.use(
     allowedHeaders: ["Content-Type", "Authorization"],
   })
 );
-
 
 // Routes
 app.use("/api/user", userRoutes);
