@@ -16,7 +16,7 @@ export const AuthProvider = ({ children }) => {
   const [isCheckingVerification, setIsCheckingVerification] = useState(false);
 
   // Routes that don't require verification
-  const publicRoutes = ["/verification-form", "/support", "/"];
+  const publicRoutes = ["/verification-form", "/support", "/", "/list-your-space"];
 
   const isPublicRoute = (pathname) => {
     return publicRoutes.some(

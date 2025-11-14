@@ -28,8 +28,7 @@ export const ChatProvider = ({ children }) => {
       const newSocket = io(import.meta.env.VITE_BACKEND_URL, {
         auth: {
           token: encodeURIComponent(user.sub)
-, // Use encodeURIComponent(user.sub)
- as token
+, // Use encodeURIComponent(user.sub)as token
           userId: encodeURIComponent(user.sub)
 ,
         },
