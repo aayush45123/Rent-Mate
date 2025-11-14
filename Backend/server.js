@@ -22,10 +22,10 @@ app.use(express.urlencoded({ limit: "50mb", extended: true }));
 app.use(
   cors({
     origin: [
-      process.env.FRONTEND_URL || "http://localhost:3000",
-      "http://localhost:5173", // Vite default port
-      "http://localhost:3000", // React default port
+      process.env.FRONTEND_URL, // GitHub pages
+      "http://localhost:5173", // Local Vite
     ],
+
     credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"],
