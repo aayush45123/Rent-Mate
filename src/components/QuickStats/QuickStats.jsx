@@ -26,7 +26,7 @@ const QuickStatsSection = () => {
       try {
         // Fetch from your backend API
         const response = await fetch(
-          "http://localhost:5000/api/ratings/trust-stats"
+          `${import.meta.env.VITE_BACKEND_URL}/ratings/trust-stats`
         );
         const data = await response.json();
 

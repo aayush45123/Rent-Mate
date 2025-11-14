@@ -18,7 +18,7 @@ const RateUsSection = () => {
       if (isAuthenticated && user?.sub) {
         try {
           const response = await fetch(
-            `http://localhost:5000/api/users/${user.sub}`
+            `${import.meta.env.VITE_BACKEND_URL}/users/${user.sub}`
           );
           if (response.ok) {
             const userData = await response.json();
@@ -50,18 +50,21 @@ const RateUsSection = () => {
     setIsSubmitting(true);
 
     try {
-      const response = await fetch("http://localhost:5000/api/ratings/submit", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          rating,
-          comment,
-          userName: userData?.name || user?.name || "Anonymous",
-          userEmail: userData?.email || user?.email || "",
-        }),
-      });
+      const response = await fetch(
+        `${import.meta.env.VITE_BACKEND_URL}/ratings/submit`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            rating,
+            comment,
+            userName: userData?.name || user?.name || "Anonymous",
+            userEmail: userData?.email || user?.email || "",
+          }),
+        }
+      );
 
       const data = await response.json();
 

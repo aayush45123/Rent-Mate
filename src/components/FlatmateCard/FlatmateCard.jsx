@@ -19,7 +19,7 @@ const FlatmateCard = ({ flatmate, onConnect }) => {
   } = flatmate;
 
   const profileImage = flatmate.auth0Id
-    ? `http://localhost:5000/api/user/${flatmate.auth0Id}/profile-image`
+    ? `${import.meta.env.VITE_BACKEND_URL}/api/user/${flatmate.auth0Id}/profile-image`
     : processedImageUrl || picture || "/default-avatar.png";
   const displaySince = createdAt ? new Date(createdAt).getFullYear() : "2025";
   const hasAbout = bio && bio.trim().length > 0;

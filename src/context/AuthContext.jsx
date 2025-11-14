@@ -4,7 +4,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 
 const AuthContext = createContext();
 
-const API_BASE = "http://localhost:5000/api";
+const API_BASE = `${import.meta.env.VITE_BACKEND_URL}`;
 
 export const AuthProvider = ({ children }) => {
   const { user, isAuthenticated, isLoading } = useAuth0();
