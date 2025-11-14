@@ -1,229 +1,198 @@
-🏡 RentMate – Find Flatmates, PGs & List Your Space
+# 🏠 RentMate – Find Your Perfect Stay & List Your Space
 
-A full-stack web platform where users can find flatmates, browse rentals, and verified property owners can list their PGs / flats / rooms with complete details.
+RentMate is a full-stack web application built to simplify the process of **finding flatmates**, **exploring PGs/flats**, and **listing properties** for rent. It features secure authentication, verified owner access, AI-powered recommendations, and a modern UI.
 
-🚀 Live Website: your GitHub Pages link
-🖥️ Frontend: React + Vite + Auth0
-⚙️ Backend: Node.js + Express + MongoDB (Render Deployment)
+---
 
-📌 Features
-👥 User Features
+## 🚀 Features
 
-Login / Signup using Auth0
+### 🔐 Authentication & Verification
 
-Create and update profile
+* Secure login with **Auth0** (Google OAuth)
+* Automatic user creation/update in backend
+* **Multi-step verification system** for property owners
+* Role-based access control (Owner / Flatmate)
+* Auto-redirect to verification for unverified users
 
-Search flatmates
+### 🏡 Property Listing (Owner-Only)
 
-Browse PGs, flats, shared rooms
+* 7-step, highly detailed listing wizard:
 
-View property details
+  * Property type & basic info
+  * Location & nearby places
+  * Property specifications
+  * Amenities & house rules
+  * Pricing & availability
+  * Photos & media
+  * Contact & publish
+* Upload multiple photos (client-side preview)
+* Publish or save as draft
 
-Contact property owners (based on visibility settings)
+### 👥 Flatmate Search
 
-🔐 Verification System
+* Explore people looking for PG/flat
+* Search by keywords & location
+* Public profiles with social media links
 
-Users fill a verification form
+### 🛏️ Find Your Stay
 
-Owners (PG Owner / Flat Owner) get Approved status
+* Explore listed PGs/flats from verified owners
 
-Only Verified Owners can:
-✔ Access List Your Space page
-✔ Create rental listings
+### 📊 Trust & Statistics
 
-🏠 Property Listing
+* Backend-generated trust metrics
+* Verified users count
+* Success rate & ratings
 
-Verified owners can create complete property listings with:
+### 📨 Messaging & Future Scope
 
-Property details (BHK, rooms, floors, size, age)
+* Real-time chat (planned)
+* Notifications (planned)
 
-Location, area, map coordinates
+---
 
-Amenities & house rules
+## 🛠️ Tech Stack
 
-Pricing & availability
+### Frontend
 
-Photos, videos, and virtual tours
+* **React + Vite**
+* CSS Modules
+* React Router
+* Auth0 React SDK
+* Lucide Icons
+* Cloud Deployment: **GitHub Pages**
 
-Contact information
+### Backend
 
-🔎 Search System
+* **Node.js + Express**
+* MongoDB + Mongoose
+* Axios for image proxying
+* Render Deployment
 
-Keyword search
+---
 
-Location-based filtering
+## 📁 Project Structure
 
-Pagination for browsing flatmates
-
-📸 Image Handling
-
-Google profile image proxy (CORS fix)
-
-Base64 fallback when image fetching fails
-
-🛠️ Tech Stack
-Frontend
-
-React 18
-
-Vite
-
-React Router
-
-Auth0
-
-Context API
-
-Lucide React Icons
-
-CSS Modules
-
-Backend
-
-Node.js + Express
-
-MongoDB + Mongoose
-
-axios (image proxy)
-
-Render Hosting
-
-📂 Folder Structure
+```
 RentMate/
- ├── src/
- │   ├── Auth/
- │   ├── components/
- │   ├── context/
- │   ├── pages/
- │   ├── assets/
- │   └── styles/
- ├── backend/
- │   ├── controllers/
- │   ├── models/
- │   ├── routes/
- │   └── server.js
- ├── .env
- ├── package.json
- ├── README.md
- └── vite.config.js
+├── src/
+│   ├── Auth/
+│   ├── components/
+│   ├── context/
+│   ├── pages/
+│   ├── utils/
+│   └── App.jsx
+├── public/
+├── package.json
+└── vite.config.js
+```
 
-⚙️ Environment Variables
-Frontend (.env)
-VITE_AUTH0_DOMAIN=your-auth0-domain
-VITE_AUTH0_CLIENT_ID=your-auth0-client-id
+---
+
+## ⚙️ Environment Variables
+
+Create a `.env` file in root:
+
+```
+VITE_AUTH0_DOMAIN=yourdomain.auth0.com
+VITE_AUTH0_CLIENT_ID=your_client_id
 VITE_BACKEND_URL=https://your-backend-url.onrender.com/api
+```
 
-Backend (.env)
-MONGO_URI=your-mongodb-connection
-PORT=5000
-NODE_ENV=production
+---
 
-🚀 How to Run Locally
-📦 1. Clone the Repository
-git clone https://github.com/yourusername/RentMate.git
+## ▶️ Running Locally
+
+### 1. Clone the repo
+
+```
+git clone https://github.com/yourname/RentMate.git
 cd RentMate
+```
 
-💻 2. Install frontend dependencies
+### 2. Install dependencies
+
+```
 npm install
+```
 
-▶ 3. Run frontend
+### 3. Run development server
+
+```
 npm run dev
+```
 
-🗄️ 4. Backend setup
-cd backend
-npm install
-npm start
+### 4. Build for production
 
-🔐 Auth Flow
+```
+npm run build
+```
 
-User logs in through Auth0
+---
 
-Frontend automatically saves user to backend
+## 🧪 Backend API Endpoints
 
-Backend checks:
+### 👤 User Routes
 
-userType
+* `POST /user` – create/update user
+* `GET /user/:auth0Id` – get user details
+* `POST /user/:auth0Id/verification` – submit verification
+* `GET /user/:auth0Id/owner-access` – check owner permissions
+* `POST /user/:auth0Id/force-approval` – test approval
+* `GET /user/:auth0Id/profile-image` – proxy Google images
+* `GET /user/details/:userId` – public profile
 
-verificationData
+### 🏡 Property Routes
 
-verificationStatus
+* `POST /property/create` – create listing
+* Additional browsing routes planned
 
-If user is not verified → redirect to /verification-form
+---
 
-If user is PG_OWNER / FLAT_OWNER AND verified → grant access to protected routes
+## 🔒 Owner Access Logic
 
-🔧 API Endpoints
-User Routes
-Method	Endpoint	Description
-POST	/user	Create / update user
-GET	/user/:auth0Id	Get user details
-PUT	/user/:auth0Id/profile	Update profile
-POST	/user/:auth0Id/verification	Submit verification
-GET	/user/:auth0Id/owner-access	Check owner privilege
-POST	/user/:auth0Id/force-approval	Testing: force approve
-Flatmate Routes
-Method	Endpoint
-GET	/user/:auth0Id/search-flatmates
-GET	/user/:auth0Id/flatmates
-Image Proxy
-GET /user/:auth0Id/profile-image
+A user is considered **verified owner** only if:
 
-🧪 Key Features Implemented in Code
-✔ Owner Access Logic
+* `userType` = PG_OWNER / FLAT_OWNER
+* `verificationData` exists
+* `verificationStatus` = APPROVED
+* `isVerified = true`
 
-Backend checks:
+---
 
-userType = PG_OWNER / FLAT_OWNER
+## 🌐 Deployment
 
-verificationData submitted
+### Frontend
 
-isVerified = true
+* Hosted on **GitHub Pages**
+* Auto build using Vite
 
-verificationStatus = APPROVED
+### Backend
 
-✔ Automatic Redirect
+* Hosted on **Render** (Node.js + MongoDB Atlas)
 
-Middleware blocks protected pages for unverified users.
+---
 
-✔ Google Image Proxy
+## 💡 Future Enhancements
 
-Backend fetches Google profile images → converts to base64 → prevents CORS failure.
+* Real-time messaging
+* Booking system
+* Payment gateway
+* Admin dashboard
+* AI property ranking
 
-🧑‍💻 Developer Notes
+---
 
-Use encodeURIComponent(user.sub) everywhere when sending Auth0 IDs.
+## 🤝 Contributing
 
-GitHub Pages requires HashRouter (/#/route format).
+Pull requests are welcome! For major changes, open an issue first.
 
-Render backend may sleep on free tier → add a retry UI for slow responses.
+---
 
-📸 Screenshots (Add after deployment)
+## 📜 License
 
-Home page
+MIT License
 
-Find flatmates
+---
 
-Verification form
-
-List your space steps
-
-Property details page
-
-⭐ Future Enhancements
-
-Chat system between owner and tenant
-
-AI-based flatmate matching
-
-Razorpay integration for token advance
-
-Admin panel for verification/approvals
-
-🤝 Contributing
-
-Pull requests are welcome.
-For major changes, open an issue first to discuss.
-
-📄 License
-
-This project is licensed under the MIT License.
+If you want, I can also create **API Documentation**, **Flowcharts**, **ER Diagram**, or a **professional GitHub README with badges**.
