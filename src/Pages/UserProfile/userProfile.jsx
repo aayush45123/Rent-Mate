@@ -103,7 +103,9 @@ const UserProfile = () => {
 
       try {
         const response = await fetch(
-          `${import.meta.env.VITE_BACKEND_URL}/user/${user.sub}`
+          `${import.meta.env.VITE_BACKEND_URL}/user/${encodeURIComponent(
+            user.sub
+          )}`
         );
 
         if (response.ok) {
@@ -169,7 +171,9 @@ const UserProfile = () => {
       }
 
       const response = await fetch(
-        `${import.meta.env.VITE_BACKEND_URL}/user/${user.sub}/profile`,
+        `${import.meta.env.VITE_BACKEND_URL}/user/${encodeURIComponent(
+          user.sub
+        )}/profile`,
         {
           method: "PUT",
           headers: { "Content-Type": "application/json" },

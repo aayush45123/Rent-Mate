@@ -428,7 +428,7 @@ const ListYourSpace = () => {
           },
           body: JSON.stringify({
             ...formData,
-            ownerId: user.sub,
+            ownerId: encodeURIComponent(user.sub),
           }),
         }
       );

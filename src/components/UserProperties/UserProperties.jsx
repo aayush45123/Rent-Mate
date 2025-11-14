@@ -38,9 +38,9 @@ const UserProperties = () => {
 
     try {
       const response = await fetch(
-        `${import.meta.env.VITE_BACKEND_URL}/property/owner/${
-          user.sub
-        }?status=${activeTab}`
+        `${
+          import.meta.env.VITE_BACKEND_URL
+        }/property/owner/${encodeURIComponent(user.sub)}?status=${activeTab}`
       );
 
       if (response.ok) {
@@ -60,7 +60,9 @@ const UserProperties = () => {
 
     try {
       const response = await fetch(
-        `${import.meta.env.VITE_BACKEND_URL}/property/owner/${user.sub}/stats`
+        `${
+          import.meta.env.VITE_BACKEND_URL
+        }/property/owner/${encodeURIComponent(user.sub)}/stats`
       );
 
       if (response.ok) {
@@ -89,7 +91,7 @@ const UserProperties = () => {
         {
           method: "PUT",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ ownerId: user.sub }),
+          body: JSON.stringify({ ownerId: encodeURIComponent(user.sub) }),
         }
       );
 
@@ -109,7 +111,7 @@ const UserProperties = () => {
         {
           method: "DELETE",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ ownerId: user.sub }),
+          body: JSON.stringify({ ownerId: encodeURIComponent(user.sub) }),
         }
       );
 
@@ -345,7 +347,9 @@ const UserProperties = () => {
                     <FaBed />
                     <span>
                       {property.propertyDetails.availableRooms} Room
-                      {property.propertyDetails.availableRooms !== 1 ? "s" : ""}{" "}
+                      {property.propertyDetails.availableRooms !== 1
+                        ? "s"
+                        : ""}{" "}
                       Available
                     </span>
                   </div>

@@ -27,18 +27,23 @@ export const ChatProvider = ({ children }) => {
 
       const newSocket = io(import.meta.env.VITE_BACKEND_URL, {
         auth: {
-          token: user.sub, // Use user.sub as token
-          userId: user.sub,
+          token: encodeURIComponent(user.sub)
+, // Use encodeURIComponent(user.sub)
+ as token
+          userId: encodeURIComponent(user.sub)
+,
         },
         query: {
-          userId: user.sub,
+          userId: encodeURIComponent(user.sub)
+,
         },
       });
 
       setSocket(newSocket);
 
       // Join user to their personal room
-      newSocket.emit("join_user", { userId: user.sub });
+      newSocket.emit("join_user", { userId: encodeURIComponent(user.sub)
+ });
 
       // Listen for new messages
       newSocket.on("receive_message", (message) => {
@@ -84,7 +89,8 @@ export const ChatProvider = ({ children }) => {
     if (socket && content.trim() && user) {
       try {
         const message = {
-          senderId: user.sub,
+          senderId: encodeURIComponent(user.sub)
+,
           receiverId,
           content: content.trim(),
           timestamp: new Date().toISOString(),
@@ -130,7 +136,8 @@ export const ChatProvider = ({ children }) => {
       console.log("Starting chat with:", otherUserId); // DEBUG
       console.log("Current user:", user); // DEBUG
 
-      if (!user || !user.sub) {
+      if (!user || !encodeURIComponent(user.sub)
+) {
         throw new Error("User not authenticated");
       }
 
@@ -142,7 +149,8 @@ export const ChatProvider = ({ children }) => {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            participant1: user.sub,
+            participant1: encodeURIComponent(user.sub)
+,
             participant2: otherUserId,
           }),
         }
@@ -168,7 +176,8 @@ export const ChatProvider = ({ children }) => {
         if (socket) {
           socket.emit("mark_messages_read", {
             chatId: data.chat._id,
-            readerId: user.sub,
+            readerId: encodeURIComponent(user.sub)
+,
           });
         }
 

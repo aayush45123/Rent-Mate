@@ -122,7 +122,9 @@ const FlatmateSearch = () => {
       setLoading(true);
       setError("");
       const response = await fetch(
-        `${import.meta.env.VITE_BACKEND_URL}/user/${user.sub}/flatmates`
+        `${import.meta.env.VITE_BACKEND_URL}/user/${encodeURIComponent(
+          user.sub
+        )}/flatmates`
       );
 
       const data = await response.json();
@@ -174,9 +176,9 @@ const FlatmateSearch = () => {
       setLoading(true);
       setError("");
       const response = await fetch(
-        `${import.meta.env.VITE_BACKEND_URL}/user/${
+        `${import.meta.env.VITE_BACKEND_URL}/user/${encodeURIComponent(
           user.sub
-        }/search-flatmates?keywords=${encodeURIComponent(searchKeywords)}`
+        )}/search-flatmates?keywords=${encodeURIComponent(searchKeywords)}`
       );
 
       const data = await response.json();

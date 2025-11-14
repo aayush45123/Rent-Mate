@@ -29,11 +29,13 @@ const ProtectedOwnerRoute = ({ children }) => {
     try {
       console.log(
         "ProtectedOwnerRoute - Checking owner access for user:",
-        user.sub
+        encodeURIComponent(user.sub)
       );
 
       const response = await fetch(
-        `${import.meta.env.VITE_BACKEND_URL}/user/${user.sub}/owner-access`
+        `${import.meta.env.VITE_BACKEND_URL}/user/${encodeURIComponent(
+          user.sub
+        )}/owner-access`
       );
 
       if (response.ok) {

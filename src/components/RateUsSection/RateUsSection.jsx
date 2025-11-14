@@ -18,7 +18,9 @@ const RateUsSection = () => {
       if (isAuthenticated && user?.sub) {
         try {
           const response = await fetch(
-            `${import.meta.env.VITE_BACKEND_URL}/users/${user.sub}`
+            `${import.meta.env.VITE_BACKEND_URL}/users/${encodeURIComponent(
+              user.sub
+            )}`
           );
           if (response.ok) {
             const userData = await response.json();

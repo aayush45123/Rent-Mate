@@ -38,7 +38,9 @@ const VerificationForm = () => {
       try {
         console.log("🔍 Checking user verification status...");
         const response = await fetch(
-          `${import.meta.env.VITE_BACKEND_URL}/user/${user.sub}`
+          `${import.meta.env.VITE_BACKEND_URL}/user/${encodeURIComponent(
+            user.sub
+          )}`
         );
 
         if (response.ok) {
@@ -361,7 +363,9 @@ const VerificationForm = () => {
       );
 
       const response = await fetch(
-        `${import.meta.env.VITE_BACKEND_URL}/user/${user.sub}/verification`,
+        `${import.meta.env.VITE_BACKEND_URL}/user/${encodeURIComponent(
+          user.sub
+        )}/verification`,
         {
           method: "POST",
           headers: {

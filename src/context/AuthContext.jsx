@@ -36,7 +36,7 @@ export const AuthProvider = ({ children }) => {
               "Content-Type": "application/json",
             },
             body: JSON.stringify({
-              auth0Id: user.sub,
+              auth0Id: encodeURIComponent(user.sub),
               name: user.name,
               email: user.email,
               picture: user.picture,
@@ -53,7 +53,7 @@ export const AuthProvider = ({ children }) => {
 
           // Check detailed verification status
           const verificationResponse = await fetch(
-            `${API_BASE}/user/${user.sub}`
+            `${API_BASE}/user/${encodeURIComponent(user.sub)}`
           );
           if (verificationResponse.ok) {
             const userData = await verificationResponse.json();
@@ -172,7 +172,8 @@ export const AuthProvider = ({ children }) => {
     console.log("Refreshing verification status...");
 
     try {
-      const response = await fetch(`${API_BASE}/user/${user.sub}`);
+      const safeId = encodeURIComponent(encodeURIComponent(user.sub));
+      const response = await fetch(`${API_BASE}/user/${safeId}`);
       if (response.ok) {
         const userData = await response.json();
         setUserVerificationStatus(userData);

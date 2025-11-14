@@ -11,7 +11,9 @@ const VerificationStatus = () => {
     if (isAuthenticated && user) {
       try {
         const response = await fetch(
-          `${import.meta.env.VITE_BACKEND_URL}/user/${user.sub}`
+          `${import.meta.env.VITE_BACKEND_URL}/user/${encodeURIComponent(
+            user.sub
+          )}`
         );
         if (response.ok) {
           const userData = await response.json();

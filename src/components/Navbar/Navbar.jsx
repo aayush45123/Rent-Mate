@@ -36,10 +36,15 @@ const Navbar = () => {
   const checkOwnerAccess = async () => {
     if (isAuthenticated && user) {
       try {
-        console.log("Checking owner access for user:", user.sub);
+        console.log(
+          "Checking owner access for user:",
+          encodeURIComponent(user.sub)
+        );
 
         const response = await fetch(
-          `${import.meta.env.VITE_BACKEND_URL}/user/${user.sub}/owner-access`
+          `${import.meta.env.VITE_BACKEND_URL}/user/${encodeURIComponent(
+            user.sub
+          )}/owner-access`
         );
 
         if (response.ok) {
@@ -111,7 +116,7 @@ const Navbar = () => {
       if (isAuthenticated && user) {
         try {
           const payload = {
-            auth0Id: user.sub,
+            auth0Id: encodeURIComponent(user.sub),
             name: user.name,
             email: user.email,
             picture: user.picture || "",
@@ -191,7 +196,7 @@ const Navbar = () => {
               Support
             </Link>
           </li>
-           <li className={styles.navItem}>
+          <li className={styles.navItem}>
             <Link to="/about" className={styles.navLink}>
               About
             </Link>
