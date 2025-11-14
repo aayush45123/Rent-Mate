@@ -20,17 +20,20 @@ app.use(express.urlencoded({ limit: "50mb", extended: true }));
 
 // CORS configuration - Updated to include localhost:5173
 app.use(
+ app.use(
   cors({
     origin: [
-      process.env.FRONTEND_URL, // GitHub pages
-      "http://localhost:5173", // Local Vite
+      "http://localhost:5173",
+      "http://localhost:3000",
+      "https://aayush45123.github.io",
+      "https://aayush45123.github.io/Rent-Mate",
     ],
-
     credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"],
   })
 );
+
 
 // Routes
 app.use("/api/user", userRoutes);
